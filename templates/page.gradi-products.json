@@ -4,11 +4,6 @@
       "type": "main-product",
       "disabled": true,
       "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square",
-        "color_scheme": "inverse",
-        "image_padding": false
       }
     },
     "1631120871fac36bb0": {
