@@ -3,7 +3,7 @@
 
 
 <ul>
-  {% for product in collections.products %}
+  {% for product in collections.all.products %}
   
   {% if product.has_only_default_variant %}
   <input name="id" value="{{ variant.id }}" type="hidden">
