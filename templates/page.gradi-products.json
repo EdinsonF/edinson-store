@@ -2,6 +2,7 @@
   "sections": {
     "main": {
       "type": "main-list-collections",
+      "disabled": true,
       "settings": {
         "title": "Collections",
         "sort": "alphabetical",
@@ -12,22 +13,22 @@
     },
     "1631120871fac36bb0": {
       "type": "collection-list",
-      "disabled": true,
       "blocks": {
         "1631120871fac36bb0-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "franela"
           }
         },
         "1631120871fac36bb0-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "damas"
           }
         },
         "1631120871fac36bb0-2": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": ""
           }
