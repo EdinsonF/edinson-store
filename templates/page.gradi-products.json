@@ -4,9 +4,16 @@
       "type": "productsgrid",
       "settings": {
       }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "form"
   ]
 }
