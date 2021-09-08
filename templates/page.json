@@ -8,7 +8,6 @@
     },
     "1631123373e409dcf1": {
       "type": "collection-list",
-      "disabled": true,
       "blocks": {
         "1631123373e409dcf1-0": {
           "type": "featured_collection",
@@ -19,14 +18,12 @@
         },
         "1631123373e409dcf1-1": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "damas"
           }
         },
         "1631123373e409dcf1-2": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "franela"
           }
@@ -60,88 +57,11 @@
       "settings": {
         "page": ""
       }
-    },
-    "1631123590061ef289": {
-      "type": "featured-product",
-      "blocks": {
-        "1631123590061ef289-0": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "1631123590061ef289-1": {
-          "type": "title",
-          "settings": {
-          }
-        },
-        "1631123590061ef289-2": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        "1631123590061ef289-3": {
-          "type": "price",
-          "settings": {
-          }
-        },
-        "1631123590061ef289-4": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
-        "1631123590061ef289-5": {
-          "type": "quantity_selector",
-          "settings": {
-          }
-        },
-        "1631123590061ef289-6": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "1631123590061ef289-7": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
-        "fbf2b8d0-abc0-4834-84ab-814db2a58310": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": ""
-          }
-        }
-      },
-      "block_order": [
-        "1631123590061ef289-0",
-        "1631123590061ef289-1",
-        "1631123590061ef289-2",
-        "1631123590061ef289-3",
-        "1631123590061ef289-4",
-        "1631123590061ef289-5",
-        "1631123590061ef289-6",
-        "1631123590061ef289-7",
-        "fbf2b8d0-abc0-4834-84ab-814db2a58310"
-      ],
-      "settings": {
-        "product": "camisa-dama",
-        "secondary_background": false,
-        "hide_variants": false,
-        "enable_video_looping": false
-      }
     }
   },
   "order": [
     "main",
     "1631123373e409dcf1",
-    "163112340096d18543",
-    "1631123590061ef289"
+    "163112340096d18543"
   ]
 }
