@@ -2,7 +2,6 @@
   "sections": {
     "main": {
       "type": "productsgrid",
-      "disabled": true,
       "settings": {
       }
     }
