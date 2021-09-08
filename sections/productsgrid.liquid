@@ -5,7 +5,7 @@
 
   {% for product in collections.all.products %}
 
-   {{product|json}}
+   <script>console.log({{ product | json }});</script>
 	
 	<div class="card_product-container">
         <div class="card_product-header">
