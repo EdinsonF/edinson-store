@@ -2,10 +2,13 @@
 
 
 
-<ul>
+
   {% for product in collections.all.products %}
-  
-  	{% if product.has_only_default_variant %}
+	
+	<div class="card_product">
+      <h2>{{ product.title }}</h2>
+      
+      {% if product.has_only_default_variant %}
   
   		<input name="id" value="{{ variant.id }}" type="hidden">
 	{% else %}
@@ -21,6 +24,9 @@
     	{% endfor%}
   		</select>
 	{% endif %}
-  <li>{{ product.title }}</li>
+	
+	</div>
+
+  	
+  
   {%endfor%}
-</ul>
