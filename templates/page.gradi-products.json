@@ -3,11 +3,53 @@
     "main": {
       "type": "main-list-collections",
       "settings": {
-        "image_ratio": "square"
+        "title": "Collections",
+        "sort": "alphabetical",
+        "image_ratio": "square",
+        "color_scheme": "inverse",
+        "image_padding": false
+      }
+    },
+    "1631120871fac36bb0": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "1631120871fac36bb0-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1631120871fac36bb0-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1631120871fac36bb0-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "1631120871fac36bb0-0",
+        "1631120871fac36bb0-1",
+        "1631120871fac36bb0-2"
+      ],
+      "settings": {
+        "title": "Collections",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1631120871fac36bb0"
   ]
 }
