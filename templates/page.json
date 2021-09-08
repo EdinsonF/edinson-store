@@ -8,6 +8,7 @@
     },
     "1631123373e409dcf1": {
       "type": "collection-list",
+      "disabled": true,
       "blocks": {
         "1631123373e409dcf1-0": {
           "type": "featured_collection",
@@ -130,7 +131,7 @@
         "fbf2b8d0-abc0-4834-84ab-814db2a58310"
       ],
       "settings": {
-        "product": "",
+        "product": "camisa-dama",
         "secondary_background": false,
         "hide_variants": false,
         "enable_video_looping": false
