@@ -3,7 +3,7 @@
 
 
 <ul>
-  {% for product in collections %}
+  {% for product in all_products %}
   
   {% if product.has_only_default_variant %}
   <input name="id" value="{{ variant.id }}" type="hidden">
@@ -14,6 +14,6 @@
     {% endfor%}
   </select>
 {% endif %}
-  <li>{{ product}}</li>
+  <li>{{ product.title }}</li>
   {%endfor%}
 </ul>
