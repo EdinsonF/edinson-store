@@ -11,13 +11,13 @@
 	{% else %}
   		<select name="id">
     	{% for variant in product.variants %}
-      		<option value="{{ variant.id }}">{{ variant.option1 }}</option>
+      		<option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
     	{% endfor%}
   		</select>
   		
   		<select name="id">
     	{% for variant in product.variants %}
-      		<option value="{{ variant.id }}">{{ variant.option2 }}</option>
+      		<option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
     	{% endfor%}
   		</select>
 	{% endif %}
