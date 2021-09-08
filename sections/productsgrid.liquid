@@ -1,11 +1,10 @@
 
 
-{% assign collection = collections['featured-collection']%}
 
 
 <ul>
-  {% for product in collection.products%}
+  {% for product in collection.products %}
   
-  <li>{{ product.title}}</li>
+  <li>{{ product.title }}</li>
   {%endfor%}
 </ul>
