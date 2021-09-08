@@ -6,9 +6,8 @@
       }
     },
     "form": {
-      "type": "contact-form",
+      "type": "productsgrid",
       "settings": {
-        "heading": ""
       }
     }
   },
