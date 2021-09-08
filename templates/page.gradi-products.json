@@ -1,8 +1,9 @@
 {
   "sections": {
     "main": {
-      "type": "main-productgrid",
+      "type": "main-list-collections",
       "settings": {
+        "image_ratio": "square"
       }
     }
   },
