@@ -84,7 +84,7 @@
         "show_view_all": true,
         "swipe_on_mobile": false,
         "image_ratio": "square",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "add_image_padding": false,
         "show_image_outline": false,
         "show_vendor": false,
@@ -93,9 +93,11 @@
     },
     "collage": {
       "type": "collage",
+      "disabled": true,
       "blocks": {
         "video": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "description": "Describe the video",
@@ -104,6 +106,7 @@
         },
         "product": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "",
             "second_image": false,
