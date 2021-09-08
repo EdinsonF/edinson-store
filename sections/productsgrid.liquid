@@ -9,8 +9,8 @@
   <input name="id" value="{{ variant.id }}" type="hidden">
 {% else %}
   <select name="id">
-    {% for variant in product.variant.option1 %}
-      <option value="{{ variant.id }}">{{ variant.title }}</option>
+    {% for variant in product.variants %}
+      <option value="{{ variant.id }}">{{ variant.option1 }}</option>
     {% endfor%}
   </select>
 {% endif %}
