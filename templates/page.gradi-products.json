@@ -6,46 +6,15 @@
       "settings": {
       }
     },
-    "1631120871fac36bb0": {
-      "type": "collection-list",
-      "blocks": {
-        "1631120871fac36bb0-0": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "franela"
-          }
-        },
-        "1631120871fac36bb0-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "damas"
-          }
-        },
-        "1631120871fac36bb0-2": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "1631120871fac36bb0-0",
-        "1631120871fac36bb0-1",
-        "1631120871fac36bb0-2"
-      ],
+    "1631127289d8ef0e77": {
+      "type": "page",
       "settings": {
-        "title": "Collections",
-        "image_ratio": "square",
-        "color_scheme": "inverse",
-        "swipe_on_mobile": false,
-        "image_padding": false,
-        "show_view_all": true
+        "page": "productos-gradiweb"
       }
     }
   },
   "order": [
     "main",
-    "1631120871fac36bb0"
+    "1631127289d8ef0e77"
   ]
 }
