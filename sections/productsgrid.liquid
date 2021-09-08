@@ -17,7 +17,7 @@
   		
   		<select name="id">
     	{% for variant in product.variants %}
-      		<option value="{{ variant.id }}">{{ variant.id }}</option>
+      		<option value="{{ variant.id }}">{{ variant.option2 }}</option>
     	{% endfor%}
   		</select>
 	{% endif %}
