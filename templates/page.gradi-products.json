@@ -5,16 +5,9 @@
       "disabled": true,
       "settings": {
       }
-    },
-    "1631127289d8ef0e77": {
-      "type": "page",
-      "settings": {
-        "page": "productos-gradiweb"
-      }
     }
   },
   "order": [
-    "main",
-    "1631127289d8ef0e77"
+    "main"
   ]
 }
