@@ -28,22 +28,23 @@
   				<input name="id" value="{{ variant.id }}" type="hidden">
       
 				{% else %}
-  				<select name="id">
+  				<select name="option1">
     		{% for variant in product.variants %}
-      		<option value="{{ variant.option1 }}">{{ variant.id }}- {{variant.option1}}</option>
+      		<option value="{{ variant.option1 }}">{{variant.option1}}</option>
     		{% endfor%}
   				</select>
   		
-  				<select name="id">
+  				<select name="option2">
     		{% for variant in product.variants %}
-      		<option value="{{ variant.option2 }}">{{ variant.id }}- {{variant.option2}}</option>
+      		<option value="{{ variant.option2 }}"> {{variant.option2}}</option>
     		{% endfor%}
   			</select>
+
 				{% endif %}
 
       	</div>
 				<div class="card_product-add">
-					<button type="button" name="bntAdd" id="bntAdd" data-id="{{product.id}}">Add</button>
+					<button type="button" name="bntAdd" class="add-cart" id="btnAdd" data-id="{{product.id}}">Add</button>
 				</div>
       
       
@@ -59,30 +60,40 @@
 
 
 	{% javascript %}
+  
+  const btnAdd = document.querySelector("#btnAdd");
+  btnAdd.addEventListener('click', addProduct);
+  
 
 function addProduct(e){
-    e.preventDefault();
-    if(e.target.classList.contains('agregar-carrito')){
-        //buscamos todo lo q tiene donde se hizo clic
-        const product = e.target.parentElement.parentElement;
-        //envianos a oytra funcion donde sacamos cada dato
-        readDateSelected(product);
+  e.preventDefault();
 
-        
-    }
+    
+  if(e.target.classList.contains('add-cart')){
+      //buscamos todo lo q tiene donde se hizo clic
+      const product = e.target.parentElement.parentElement;
+
+      //envianos a oytra funcion donde sacamos cada dato
+      readDateSelected(product);
+  }
 }
 
 //sacamos los datos del segmentos en objeto
 function readDateSelected(product){
+  console.log(product);
     
     const newProduct = {
-        imagen : product.querySelector('img').src,
-        titulo : product.querySelector('h4').textContent,
-        precio : product.querySelector('.precio span').textContent,
-        id     : product.querySelector('a').getAttribute('data-id')
+        title       : product.querySelector('h2').textContent,
+        image       : product.querySelector('img').src,
+        description : product.querySelector('span').textContent,
+
+        //precio : product.querySelector('.precio span').textContent,
+        //id     : product.querySelector('a').getAttribute('data-id')
     }
+
+    console.log(newProduct);
     //agregamos al carrito
-    addCarrito(newProduct);
+    //addCarrito(newProduct);
 
 }
 
