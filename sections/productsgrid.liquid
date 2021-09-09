@@ -12,11 +12,12 @@
            <h2>{{ product.title }}</h2>
         </div>
       	<div class="card_product-body">
-           <img src="{{product.featured_image}}" />
+           <img srcset="//cdn.shopify.com/s/files/1/0597/0044/5384/{{product.featured_image}}" src="{{product.featured_image}}" alt="">
         </div>
 
         <div class="card_product-description">
-           <h3>{{ product.description }}</h3>
+           <h3> Descripción</h3>
+					 <span>{{ product.description }}</span>
         </div>
 
         <div class="card_product-option">
@@ -27,13 +28,13 @@
 		{% else %}
   			<select name="id">
     	{% for variant in product.variants %}
-      		<option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
+      		<option value="{{ variant.option1 }}">{{ variant.id }}- {{variant.option1}}</option>
     	{% endfor%}
   			</select>
   		
   			<select name="id">
     	{% for variant in product.variants %}
-      		<option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
+      		<option value="{{ variant.option2 }}">{{ variant.id }}- {{variant.option2}}</option>
     	{% endfor%}
   			</select>
 	{% endif %}
