@@ -40,9 +40,10 @@
     		{% endfor%}
   			</select>
 				{% endif %}
+
       	</div>
 				<div class="card_product-add">
-					<button type="button" name="bntAdd">Add</button>
+					<button type="button" name="bntAdd" id="bntAdd" data-id="{{product.id}}">Add</button>
 				</div>
       
       
@@ -53,3 +54,63 @@
   	
   
   {%endfor%}
+
+
+
+
+	{% javascript %}
+
+function addProduct(e){
+    e.preventDefault();
+    if(e.target.classList.contains('agregar-carrito')){
+        //buscamos todo lo q tiene donde se hizo clic
+        const product = e.target.parentElement.parentElement;
+        //envianos a oytra funcion donde sacamos cada dato
+        readDateSelected(product);
+
+        
+    }
+}
+
+//sacamos los datos del segmentos en objeto
+function readDateSelected(product){
+    
+    const newProduct = {
+        imagen : product.querySelector('img').src,
+        titulo : product.querySelector('h4').textContent,
+        precio : product.querySelector('.precio span').textContent,
+        id     : product.querySelector('a').getAttribute('data-id')
+    }
+    //agregamos al carrito
+    addCarrito(newProduct);
+
+}
+
+//agregando al carrito
+function addCarrito(newProduct){
+
+    //const row = document.createElement('tr');
+    
+
+    //row.innerHTML = `<td>
+    //                <img src="${infoCurso.imagen}" width="100">
+       //             </td>
+        //            <td>
+         //           ${infoCurso.titulo}
+          //          </td>
+           //         <td>
+            //        ${infoCurso.precio}
+             //       </td>
+              //      <td>
+               //     <a src"#" class="borrar-curso" data-id="${infoCurso.id}">
+                //    X</a>
+                 //   </td>`
+
+
+    //listCarrito.appendChild(row);
+
+    //addLocalStorage(infoCurso);
+
+}
+
+	{% endjavascript %}
