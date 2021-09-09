@@ -47,9 +47,6 @@
 					<button type="button" name="bntAdd" class="add-cart" id="btnAdd" data-id="{{product.id}}">Add</button>
 				</div>
       
-      
-	
-	
 	</div>
 
   	
@@ -57,7 +54,7 @@
   {%endfor%}
 
 
-
+//5320  -  6392
 
 	{% javascript %}
   
@@ -83,10 +80,11 @@ function readDateSelected(product){
   console.log(product);
     
     const newProduct = {
+        id          : product.querySelector('button').getAttribute('data-id'),
         title       : product.querySelector('h2').textContent,
         image       : product.querySelector('img').src,
         description : product.querySelector('span').textContent,
-
+        //obtener id de la variacion
         //precio : product.querySelector('.precio span').textContent,
         //id     : product.querySelector('a').getAttribute('data-id')
     }
