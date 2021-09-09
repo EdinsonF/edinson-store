@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "productsgrid",
+      "type": "main-404",
       "settings": {
         "type": "collection",
         "id": "featured_collection",
