@@ -3,6 +3,9 @@
     "main": {
       "type": "productsgrid",
       "settings": {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "product grid"
       }
     }
   },
