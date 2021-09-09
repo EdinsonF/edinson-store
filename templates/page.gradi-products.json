@@ -2,11 +2,8 @@
   "sections": {
     "main": {
       "type": "productsgrid",
-      "settings": [{
-        "type": "collection",
-        "id": "featured_collection",
-        "label": "Featured collection"
-      }]
+      "settings": {
+      }
     }
   },
   "order": [
