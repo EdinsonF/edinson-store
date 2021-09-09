@@ -5,7 +5,7 @@
       "settings": {
         "type": "collection",
         "id": "featured_collection",
-        "label": "product grid"
+        "label": "product grid" 
       }
     }
   },
