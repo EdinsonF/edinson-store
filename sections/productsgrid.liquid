@@ -6,6 +6,8 @@
   {% for product in collections.all.products %}
 
    <script>console.log({{ product | json }});</script>
+
+
 	
 	<div class="card_product-container">
         <div class="card_product-header">
@@ -21,24 +23,27 @@
         </div>
 
         <div class="card_product-option">
-			{% if product.has_only_default_variant %}
+				{% if product.has_only_default_variant %}
   
-  		<input name="id" value="{{ variant.id }}" type="hidden">
+  				<input name="id" value="{{ variant.id }}" type="hidden">
       
-		{% else %}
-  			<select name="id">
-    	{% for variant in product.variants %}
+				{% else %}
+  				<select name="id">
+    		{% for variant in product.variants %}
       		<option value="{{ variant.option1 }}">{{ variant.id }}- {{variant.option1}}</option>
-    	{% endfor%}
-  			</select>
+    		{% endfor%}
+  				</select>
   		
-  			<select name="id">
-    	{% for variant in product.variants %}
+  				<select name="id">
+    		{% for variant in product.variants %}
       		<option value="{{ variant.option2 }}">{{ variant.id }}- {{variant.option2}}</option>
-    	{% endfor%}
+    		{% endfor%}
   			</select>
-	{% endif %}
+				{% endif %}
       	</div>
+				<div class="card_product-add">
+					<button type="button" name="bntAdd">Add</button>
+				</div>
       
       
 	
