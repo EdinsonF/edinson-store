@@ -108,9 +108,9 @@
         const rs = await fetch(url);
         const {variants} = await rs.json();
         
-        //const id_variant = variants.filter(variant => variant.title === compare);
+        const id_variant = variants.filter(variant => variant.title === compare);
 
-        console.log(variants);
+        console.log(id_variant);
 
         
 
