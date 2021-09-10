@@ -3,7 +3,6 @@
 <div id="cart-list" class="card_product-container">
   {% for product in collections.all.products %}
       <script> console.log({{ product | json }})</script>
-      <script> console.log({{ product.options_with_values | json }})</script>
        <div class="card">
           <div class="card_product-header">
               <h2>{{ product.title }}</h2>
@@ -72,7 +71,7 @@
 
 
   function prueba(e){
-    console.log(e.target.value);
+    //console.log(e.target.value);
      
   } 
   
@@ -101,14 +100,17 @@
         //obtener id de la variacion 
         let compare = `${option1} / ${option2}`;
 
-        console.log(compare);
         //consultar id de variante 
         let url=(`/admin/api/2021-07/products/${id_product}/variants.json`);
 
         const rs = await fetch(url);
         const {variants} = await rs.json();
         
-        const id_variant = variants.filter(variant => variant.title === compare);
+        const id_variant = variants.map(variant => {
+          if(variant.title === compare){
+            return varian.id
+          }
+        });
 
         console.log(id_variant);
 
@@ -122,27 +124,8 @@
   //agregando al carrito
   function addCarrito(newProduct){
   
-    //const row = document.createElement('tr');
-    
-  
-    //row.innerHTML = `<td>
-    //                <img src="${infoCurso.imagen}" width="100">
-       //             </td>
-        //            <td>
-         //           ${infoCurso.titulo}
-          //          </td>
-           //         <td>
-            //        ${infoCurso.precio}
-             //       </td>
-              //      <td>
-               //     <a src"#" class="borrar-curso" data-id="${infoCurso.id}">
-                //    X</a>
-                 //   </td>`
-  
-  
-    //listCarrito.appendChild(row);
-  
-    //addLocalStorage(infoCurso);
+
+   
   
   }
   
