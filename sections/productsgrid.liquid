@@ -105,7 +105,7 @@
 
         const rs = await fetch(url);
         const {variants} = await rs.json();
-        const id_variant;
+        let id_variant;
          variants.filter(variant => {
           if(variant.title === compare){
             id_variant= varian.id
