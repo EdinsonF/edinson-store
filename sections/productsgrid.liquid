@@ -118,14 +118,35 @@
         
 
     //agregamos al carrito
-    addCarrito(newProduct);
+    addCarrito(id_variant);
   
   }
   
   //agregando al carrito
-  function addCarrito(newProduct){
-  
+  function addCarrito(id_variant){
+    
 
+    let formData = {
+        'items': [{
+          'id': id_variant,
+          'quantity': 1
+          }]
+        };
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          return response.json();
+          console.log("add");
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
    
   
   }
