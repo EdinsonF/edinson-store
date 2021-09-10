@@ -106,8 +106,11 @@
         let url=(`/admin/api/2021-07/products/${id_product}/variants.json`);
 
         const rs = await fetch(url);
-        const data = await rs.json();
-        console.log(data);
+        const variants = await rs.json();
+        
+        const id_variant = variants.filter(variant => variant.title === compare);
+
+        console.log(id_variant);
 
         
 
