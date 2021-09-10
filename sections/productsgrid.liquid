@@ -105,10 +105,10 @@
 
         const rs = await fetch(url);
         const {variants} = await rs.json();
-        
-        const id_variant = variants.forEach(variant => {
+        const id_variant;
+         variants.filter(variant => {
           if(variant.title === compare){
-            return variant.id
+            id_variant= varian.id
           }
         });
 
@@ -117,7 +117,7 @@
         
 
     //agregamos al carrito
-    //addCarrito(newProduct);
+    addCarrito(newProduct);
   
   }
   
