@@ -106,7 +106,7 @@
         const rs = await fetch(url);
         const {variants} = await rs.json();
         
-        const id_variant = variants.map(variant => {
+        const id_variant = variants.foreach(variant => {
           if(variant.title === compare){
             return variant.id
           }
