@@ -106,7 +106,7 @@
         let url=(`/admin/api/2021-07/products/${id_product}/variants.json`);
 
         const rs = await fetch(url);
-        const data = await rs.text();
+        const data = await rs.json();
         console.log(data);
 
         
