@@ -1,106 +1,127 @@
 
 
-
-
-
+<div id="cart-list" class="card_product-container">
   {% for product in collections.all.products %}
+      <script> console.log({{ product | json }})</script>
+      <script> console.log({{ product.options_with_values | json }})</script>
+       <div class="card">
+          <div class="card_product-header">
+              <h2>{{ product.title }}</h2>
+          </div>
+          <div class="card_product-body">
+              <img srcset="//cdn.shopify.com/s/files/1/0597/0044/5384/{{product.featured_image}}" src="{{product.featured_image}}" alt="">
+          </div>
 
-   <script>console.log({{ product | json }});</script>
+          <div class="card_product-description">
+              <h3> Descripción</h3>
+              <span>{{ product.description }}</span>
+          </div>
 
-
-	
-	<div class="card_product-container">
-        <div class="card_product-header">
-           <h2>{{ product.title }}</h2>
-        </div>
-      	<div class="card_product-body">
-           <img srcset="//cdn.shopify.com/s/files/1/0597/0044/5384/{{product.featured_image}}" src="{{product.featured_image}}" alt="">
-        </div>
-
-        <div class="card_product-description">
-           <h3> Descripción</h3>
-					 <span>{{ product.description }}</span>
-        </div>
-
-        <div class="card_product-option">
-				{% if product.has_only_default_variant %}
-  
-  				<input name="id" value="{{ variant.id }}" type="hidden">
+          <div class="card_product-option">
+            {% if product.has_only_default_variant %}
       
-				{% else %}
-  				<select name="option1">
-    		{% for variant in product.variants %}
-      		<option value="{{ variant.option1 }}">{{variant.option1}}</option>
-    		{% endfor%}
-  				</select>
-  		
-  				<select name="option2">
-    		{% for variant in product.variants %}
-      		<option value="{{ variant.option2 }}"> {{variant.option2}}</option>
-    		{% endfor%}
-  			</select>
+              <input name="id" value="{{ variant.id }}" type="hidden">
+          
+            {% else %}
+            
+                {% for option in product.options_with_values %}
+                  
+                    {% if option.name == "Talla" %}
+                      <select name="talla" class="selectSelected" onchange="prueba(event)" >
+                          {% for value in option.values %}
+                            <option 
+                              value="{{ value }}">
+                                {{value}}
+                            </option>
+                          {% endfor%}
+                      </select>
+                    {% endif %}
+                
+                    {% if option.name == "Color" %}
+                        <!-- <label >{{ option.name }}</label> -->
+                        {% for value in option.values %}
+                          <input 
+                            id="color-{{ forloop.index }}"  
+                            class="radioSelect"    
+                            type="radio" 
+                            name="color" 
+                            value="{{ value }}" 
+                            {%if forloop.first%}  
+                              checked
+                            {%endif%} 
+                          />
+                            
+                          {{value}}
+                        {% endfor%}
+                    {% endif %}
+                {% endfor%}
+            
+            {% endif %}
+          </div>
 
-				{% endif %}
+          <div class="card_product-add">
+            <button type="button" name="bntAdd" class="add-cart"  data-id="{{product.id}}" onclick="addProduct(event)" >Add</button>
+          </div>
+       </div>
 
-      	</div>
-				<div class="card_product-add">
-					<button type="button" name="bntAdd" class="add-cart" id="btnAdd" data-id="{{product.id}}">Add</button>
-				</div>
-      
-	</div>
+  {%endfor%}      
+</div>
 
-  	
+
+<script>
+
+
+  function prueba(e){
+    console.log(e.target.value);
+     
+  } 
   
-  {%endfor%}
-
-
-//5320  -  6392
-
-	{% javascript %}
   
-  const btnAdd = document.querySelector("#btnAdd");
-  btnAdd.addEventListener('click', addProduct);
-  
-
-function addProduct(e){
-  e.preventDefault();
-
-    
-  if(e.target.classList.contains('add-cart')){
-      //buscamos todo lo q tiene donde se hizo clic
-      const product = e.target.parentElement.parentElement;
-
-      //envianos a oytra funcion donde sacamos cada dato
-      readDateSelected(product);
-  }
-}
-
-//sacamos los datos del segmentos en objeto
-function readDateSelected(product){
-  console.log(product);
-    
-    const newProduct = {
-        id          : product.querySelector('button').getAttribute('data-id'),
-        title       : product.querySelector('h2').textContent,
-        image       : product.querySelector('img').src,
-        description : product.querySelector('span').textContent,
-        //obtener id de la variacion
-        //precio : product.querySelector('.precio span').textContent,
-        //id     : product.querySelector('a').getAttribute('data-id')
+  function addProduct(e){
+    e.preventDefault();
+    if(e.target.classList.contains('add-cart')){
+        //buscamos todo lo q tiene donde se hizo clic  
+        const productCard = e.target.parentElement.parentElement;
+        readDateCard(productCard);
     }
+  }
+  
+  //sacamos los datos del segmentos en objeto
+  async function readDateCard(productCard){
+  
+    const newProduct = {
+    }
+        /* id        : productCard.querySelector('button').getAttribute('data-id'),
+        title       : productCard.querySelector('h2').textContent,
+        image       : productCard.querySelector('img').src,
+        description : productCard.querySelector('span').textContent, */
+        let id_product = productCard.querySelector('button').getAttribute('data-id');
+        let option1 = productCard.querySelector("select").value;
+        let option2 = productCard.querySelector("input[name='color']:checked").value;
+        //obtener id de la variacion 
+        let compare = `${option1} / ${option2}`;
 
-    console.log(newProduct);
+        console.log(compare);
+        //consultar id de variante 
+        let url=(`/admin/api/2021-07/products/${id_product}/variants.json`);
+
+        const rs = await fetch(url);
+        const data = await rs.text();
+        console.log(data);
+
+        
+
     //agregamos al carrito
     //addCarrito(newProduct);
-
-}
-
-//agregando al carrito
-function addCarrito(newProduct){
-
+  
+  }
+  
+  //agregando al carrito
+  function addCarrito(newProduct){
+  
     //const row = document.createElement('tr');
     
-
+  
     //row.innerHTML = `<td>
     //                <img src="${infoCurso.imagen}" width="100">
        //             </td>
@@ -114,15 +135,16 @@ function addCarrito(newProduct){
                //     <a src"#" class="borrar-curso" data-id="${infoCurso.id}">
                 //    X</a>
                  //   </td>`
-
-
+  
+  
     //listCarrito.appendChild(row);
-
+  
     //addLocalStorage(infoCurso);
-
-}
-
-	{% endjavascript %}
+  
+  }
+  
+  </script>
+	
 
 
   {% schema %}
