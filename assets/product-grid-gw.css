@@ -1,0 +1,27 @@
+.card_product-container{
+  background: rgb(234, 242, 247);
+  display: flex;
+}
+
+.card{
+  height: 500px;
+  width: 250px;
+  margin-left: 15px;
+}
+
+.card_product-header{
+  
+  display: flex;
+  justify-content: center;
+}
+
+.card_product-body{
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img{
+  height: 200px;
+  
+}
