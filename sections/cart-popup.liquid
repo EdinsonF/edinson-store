@@ -1,10 +1,3 @@
-{{ 'cart-product-gw.css' | asset_url | stylesheet_tag }}
-
-
-<div class="cart-popup" id="carts">
-
-    
-</div>
 
 
 <script>
@@ -27,7 +20,7 @@ async function  loadCart(){
         containerCart.innerHTML = header;
 
         response.items.forEach(item => {
-
+          console.log(item);
           containerCart.innerHTML += `    
             <div class="cart_variant">
 
@@ -48,7 +41,7 @@ async function  loadCart(){
                           type="button" 
                           name="bntAdd" 
                           class="cart_variant-btnLess" 
-                          onclick="">
+                          onclick="updateCart(${item.id}, ${item.quantity - 1})">
                           -
                         </button>
 
@@ -58,7 +51,7 @@ async function  loadCart(){
                           type="button" 
                           name="bntAdd" 
                           class="cart_variant-btnPlus"  
-                          onclick="">
+                          onclick="addCarrito(${item.id})">
                           +
                         </button>
       
@@ -69,7 +62,7 @@ async function  loadCart(){
 
                 <div class="cart_variant-footer">
                   <div>Total:</div>
-                  <div>${item.final_line_price}</div>
+                  <div>${formatterPeso.format(addDecimal(item.final_line_price))}</div>
                 </div>
             </div>`
         });
@@ -85,13 +78,39 @@ async function  loadCart(){
   function showCart(){
       const cart = document.querySelector(".cart-popup");
       cart.style.display = "flex";
+       
+  }
+
+
+  function updateCart(id_variant, quanty){
+    
+
+    let formData = {
+        updates: {
+          [id_variant] : quanty
+        }
+        }
+
+        fetch('/cart/update.js', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+
+          loadCart();
+          return response.json();
+       
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+
   }
 
   loadCart();
-
-
-  
-
 
 
 </script>
