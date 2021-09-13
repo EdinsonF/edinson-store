@@ -4,9 +4,15 @@
       "type": "productsgrid",
       "settings": { 
       }
+    },
+    "popup": {
+      "type": "cart-popup",
+      "settings": { 
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "popup"
   ]
 }

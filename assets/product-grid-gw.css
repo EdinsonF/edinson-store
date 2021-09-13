@@ -1,9 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .card_product-container{
   background: rgb(234, 242, 247);
   display: flex;
+  padding: 20px 15px;
 }
 
 .card{
+  display: flex;
+  flex-direction:column;
   height: 500px;
   width: 250px;
   margin-left: 15px;
@@ -13,6 +21,13 @@
   
   display: flex;
   justify-content: center;
+  text-align: justify;
+}
+
+.card_product-description{
+  height: 100px;
+  overflow: hidden;
+  
 }
 
 .card_product-body{
@@ -20,8 +35,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-img{
+  width: 100%;
   height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.card_product-body > img{
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+
   
 }
+
+.card_product-option{
+  display: flex;
+}
+
+.card_option-Select{
+  display: flex;
+  align-items: center;
+}
+.card_option-Select > select{
+  padding: 5px;
+}
+
+.card_option-radio{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 10px;
+  padding: 15px;
+
+}
+
+.card_product-add{
+  display: flex;
+  bottom: 0;
+
+}
+
+.card_product-add > button{
+  width: 100%;
+  height: 30px;
+}
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+{{ 'cart-product-gw.css' | asset_url | stylesheet_tag }}
+
+
+<div class="cart-popup" id="carts">
+
+    
+</div>
+
+
+<script>
+
+async function  loadCart(){
+    const containerCart = document.querySelector("#carts");
+    const cart = await fetch('/cart.js');
+    const response = await cart.json();
+
+    console.log(response.items);
+
+    if(response.items.length != 0){
+
+        const header = `<div class="cart-header">
+                        <h3>Producto</h3>
+                        <h3>Detalles</h3>
+                        <h3>Precio</h3>
+                      </div>`;
+      
+        containerCart.innerHTML = header;
+
+        response.items.forEach(item => {
+
+          containerCart.innerHTML += `    
+            <div class="cart_variant">
+
+                <div class="cart_variant-body">
+                    <div class="cart_variant_body-photo">
+                      <img src='${item.image}' />  
+                    </div>
+                    <div class="cart_variant_body-description">
+                      <h3>${item.product_title}</h3>
+                      <div class="description-text">${item.product_description}</div>
+                      <div>${item.variant_title}</div>
+
+                    </div>
+                    <div class="cart_variant_body-option">
+                      <div class="cart_varian-quanty"> 
+
+                        <button 
+                          type="button" 
+                          name="bntAdd" 
+                          class="cart_variant-btnLess" 
+                          onclick="">
+                          -
+                        </button>
+
+                        <div>${item.quantity}</div> 
+
+                        <button 
+                          type="button" 
+                          name="bntAdd" 
+                          class="cart_variant-btnPlus"  
+                          onclick="">
+                          +
+                        </button>
+      
+                      </div>
+                      <div> eliminar</div>  
+                    </div>
+                </div>
+
+                <div class="cart_variant-footer">
+                  <div>Total:</div>
+                  <div>${item.final_line_price}</div>
+                </div>
+            </div>`
+        });
+
+
+    }else{
+      containerCart.innerHTML = "<div class='cart-null'>Carrito vacio!</div>"
+    }
+
+ 
+  }
+
+  function showCart(){
+      const cart = document.querySelector(".cart-popup");
+      cart.style.display = "flex";
+  }
+
+  loadCart();
+
+
+  
+
+
+
+</script>
