@@ -30,7 +30,6 @@
                         <div class="card_option-Select">
                             <select name="talla" 
                               class="selectSelected"     
-                              onchange="changeOption(event)" 
                             >
                             {% for value in option.values %}
                               <option 
@@ -49,23 +48,25 @@
                       <!-- <label >{{ option.name }}</label> -->
                       <div class="card_option-radio">
                         {% for value in option.values %}
-                        <label style="background-color: {{product.variants[forloop.index0].metafields.color.value}}">
-                              <input 
-                              id="color-{{ forloop.index }}"  
-                              class="radioSelect"    
-                              type="radio" 
-                              name="color{{product.id}}" 
-                              value="{{ value }}"
-                              onmouseover="changeOption(event)"
-                              
-                               
-                              {%if forloop.first%}  
-                                checked
-                              {%endif%} 
-                            />
+                        <label 
+                          onmouseover="changeOption(event)" class="option-radio" 
+                          style="background-color: {{product.variants[forloop.index0].metafields.color.value}}
                           
-                            {{value}}</label>
-                            
+                        ">
+                          <input 
+                            id="color-{{ forloop.index0}}"  
+                            class="radioSelect"    
+                            type="radio" 
+                            name="color{{product.id}}" 
+                            value="{{ value }}"                     
+                          {%if forloop.first%}  
+                            checked
+                          {%endif%} 
+                          />
+                        
+                          
+                        </label>
+                      
                         {% endfor%}
                       </div>
                       
@@ -94,11 +95,12 @@
 
 
   function changeOption(e){
+    console.log("change", e.target.querySelector('input'));
     const productCard = e.target.parentElement.parentElement.parentElement;
-     e.target.checked = true;
+    e.target.querySelector('input').checked = true;
      const {id_product , varianObj} = readDateCard(productCard);
      const  imageObj  =  varianObj.featured_image.src;
-     console.log(varianObj);
+    
 
      const image = document.querySelector(`#image${id_product}`);
            image.setAttribute('srcset', imageObj);

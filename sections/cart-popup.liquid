@@ -3,7 +3,8 @@
 <script>
 
 async function  loadCart(){
-    const containerCart = document.querySelector("#carts");
+    const containerCart = document.querySelector(".cart-items");
+    let totalPrice = 0;
     const cart = await fetch('/cart.js');
     const response = await cart.json();
 
@@ -23,7 +24,6 @@ async function  loadCart(){
           console.log(item);
           containerCart.innerHTML += `    
             <div class="cart_variant">
-
                 <div class="cart_variant-body">
                     <div class="cart_variant_body-photo">
                       <img src='${item.image}' />  
@@ -65,14 +65,23 @@ async function  loadCart(){
                   <div>${formatterPeso.format(addDecimal(item.final_line_price))}</div>
                 </div>
             </div>`
+
+            totalPrice = totalPrice + item.final_line_price;
         });
 
-
+        containerCart.innerHTML +=`
+            <div class="cart-total">
+              <button
+                  class="cart-btn-checkout" 
+                  name="checkout"
+                  form="cart">
+                  <label>{{ 'sections.cart.checkout' | t }}</label>  <label>${formatterPeso.format(addDecimal(totalPrice))}</label>
+                </button>
+               
+            </div>`;
     }else{
       containerCart.innerHTML = "<div class='cart-null'>Carrito vacio!</div>"
     }
-
- 
   }
 
   function showCart(){
