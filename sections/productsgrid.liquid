@@ -6,6 +6,8 @@
 
 <div id="cart-list" class="card_product-container">
   {% for product in collections.all.products %}
+<script> console.log({{ product.metafields.descripcion.value | json }})</script> 
+
        <div class="card">
           <div class="card_product-header">
               <h2>{{ product.title }}</h2>
