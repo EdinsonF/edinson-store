@@ -3,7 +3,7 @@
     "main": {
       "type": "productsgrid",
       "settings": {
-        "featured_collection": "camisetas-hombre"
+        "featured_collection": "damas"
       }
     },
     "popup": {
