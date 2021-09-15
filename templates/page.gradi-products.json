@@ -3,7 +3,7 @@
     "main": {
       "type": "productsgrid",
       "settings": {
-        "featured_collection": "frontpage"
+        "featured_collection": "franela"
       }
     },
     "popup": {
