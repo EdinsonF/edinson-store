@@ -24,8 +24,7 @@
           </div>
 
           <div class="card_product-option">
-
-              
+             
                   {% for option in product.options_with_values %}
                       {% if option.name == "Talla" %}
                       
@@ -44,8 +43,7 @@
                         
                       {% endif %}
               
-            
-              
+                      
                     {% if option.name == "Color" %}
                       <!-- <label >{{ option.name }}</label> -->
                       <div class="card_option-radio">

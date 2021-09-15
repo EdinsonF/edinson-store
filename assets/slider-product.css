@@ -1,24 +1,22 @@
-.carousel {
-  max-width: 800px;
-  min-width: 700px;
-  margin: 0 auto;
-  display: flex;
-}
-#imagen {
-  width: 100%;
+.slide-image{
+  width: 500px;
   height: 400px;
-  background-size: cover;
-}
-.slider-container{
-  display: flex;
-  padding: 50px;
+  border-radius: 10px;
 }
 
-.details{
+.splide__slide {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-left: 20px;
-  
+  align-items: center;
+  flex-direction: row;
+  width: 400px;
 
+}
+.slider_details{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
 }

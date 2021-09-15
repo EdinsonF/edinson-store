@@ -1,101 +1,38 @@
 {{ 'slider-product.css' | asset_url | stylesheet_tag }}
 
-<script>let arrCollection = [] </script>
-{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+<script src="{{ 'splidejs.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'splide-sea-green.min.css' | asset_url }}" media="print" onload="this.media='all'">
 
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+      {% for product in collections.all.products %}
+      
+          <li class="splide__slide">
+            <img srcset="{{product.metafields.image.value }}" alt="" class="slide-image">
 
-
-{% for product in collections.all.products %}
-{{product.metafields.image.value }}
-
-{% endfor% %}
-
-<div class="slider-container">
-<div class="carousel">
-  <button id="retroceder">Retroceder</button>
-      <div id="imagen">
-
+          <div class="slider_details">
+            <div class="slider_details-title">
+                <h1>{{product.metafields.titulo.value }}</h1>
+            </div>
+            <p>
+              {{product.metafields.descripcion.value }}
+            </p>
+          </div>
+          </li>
+      {% endfor% %}
+        </ul>
       </div>
-  <button id="avanzar">Avanzar</button>
-</div>
-<div class="details">
-  <h1>Title</h1>
-  <div class="description">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, reiciendis. Molestiae sed omnis est eligendi ullam sit hic harum ab!
-  </div>
-</div>
-</div>
+    </div>
+
 
 <script>
-  console.log(arrCollection);
-window.onload = function () {
-    // Variables
-    const IMAGENES = [
-        {image :'https://neliosoftware.com/es/wp-content/uploads/sites/3/2018/07/aziz-acharki-549137-unsplash-1200x775.jpg',
-        title: "esto es un titlo",
-        description : "loremwadawndkjnbakjwbdbhjabwhdbhjbawdhbhjwabdhjabw"
-        },
-        {
-        image :'https://cdn.pixabay.com/photo/2015/10/12/14/59/milky-way-984050__480.jpg',
-        title: "esto es un titlo",
-        description : "loremwadawndkjnbakjwbdbhjabwhdbhjbawdhbhjwabdhjabw"
-        }
-       
-        
-    ];
+ 
+  document.addEventListener( 'DOMContentLoaded', function () {
+		new Splide( '.splide' ).mount();
+	} );
 
-    let posicionActual = 0;
-    let $botonRetroceder = document.querySelector('#retroceder');
-    let $botonAvanzar = document.querySelector('#avanzar');
-    let $imagen = document.querySelector('#imagen');
-
-
-    // Funciones
-
-    /**
-     * Funcion que cambia la foto en la siguiente posicion
-     */
-    function pasarFoto() {
-        if(posicionActual >= IMAGENES.length - 1) {
-            posicionActual = 0;
-        } else {
-            posicionActual++;
-        }
-        renderizarImagen();
-    }
-
-    /**
-     * Funcion que cambia la foto en la anterior posicion
-     */
-    function retrocederFoto() {
-        if(posicionActual <= 0) {
-            posicionActual = IMAGENES.length - 1;
-        } else {
-            posicionActual--;
-        }
-        renderizarImagen();
-    }
-
-    /**
-     * Funcion que actualiza la imagen de imagen dependiendo de posicionActual
-     */
-    function renderizarImagen () {
-        $imagen.style.backgroundImage = `url(${IMAGENES[posicionActual].image})`;
-    }
-
-   
-  
-
-    // Eventos
-    $botonAvanzar.addEventListener('click', pasarFoto);
-    $botonRetroceder.addEventListener('click', retrocederFoto);
-    
-    
-    // Iniciar
-    renderizarImagen();
-} 
-
-</script>
+  </script>
 
 {% schema %}
 {
