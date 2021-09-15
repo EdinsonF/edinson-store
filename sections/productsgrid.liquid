@@ -8,10 +8,9 @@
       
     -%}
    
-    <script>console.log({{ collection_page | json }})</script>
-
+    
 <div id="cart-list" class="card_product-container">
-  {% for product in collections.all.products %}
+  {% for product in collection_page.products %}
   <script>console.log({{ product | json }})</script>
  
 
