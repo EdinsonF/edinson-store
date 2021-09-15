@@ -7,12 +7,12 @@
       assign collection_page = collections[section.settings.featured_collection]
       
     -%}
-    {% unless collection_page == empty %}
-    ...
-    <script>console.log("no")</script>
-{% endunless %}
+   
+    <script>console.log({{ collection_page | json }})</script>
+
 <div id="cart-list" class="card_product-container">
   {% for product in collections.all.products %}
+  <script>console.log({{ product | json }})</script>
  
 
        <div class="card">
@@ -225,8 +225,8 @@
 
   {% schema %}
   {
-    "name": "collection-show",
-      "settings": [
+    "name": "Customize products",
+    "settings": [
       {
         "type": "collection",
         "id": "featured_collection",

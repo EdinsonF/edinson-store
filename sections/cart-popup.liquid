@@ -8,7 +8,7 @@ async function  loadCart(){
     const cart = await fetch('/cart.js');
     const response = await cart.json();
 
-    console.log(response.items);
+   
 
     if(response.items.length != 0){
 
