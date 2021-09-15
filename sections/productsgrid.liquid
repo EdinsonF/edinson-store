@@ -9,6 +9,7 @@
     -%}
    
     
+
 <div id="cart-list" class="card_product-container">
   {% for product in collection_page.products %}
   <script>console.log({{ product | json }})</script>
@@ -32,6 +33,9 @@
           <div class="card_product-option">
              
                   {% for option in product.options_with_values %}
+
+
+
                       {% if option.name == "Talla" %}
                       
                         <div class="card_option-Select">
@@ -54,17 +58,24 @@
                       <!-- <label >{{ option.name }}</label> -->
                       <div class="card_option-radio">
                         {% for value in option.values %}
+
                         <label 
-                          onmouseover="changeOption(event)" class="option-radio" 
-                          style="background-color: {{product.variants[forloop.index0].metafields.color.value}}
+                        {% if product.variants[forloop.index0].available %}
+
+                        onmouseover="changeOption(event)"  
+
+                        {%endif%}
+                        class="option-radio"
+                          style="background-color: {{product.variants[forloop.index0].metafields.color.value}}" 
+                          disabled="disabled"                    
                           
-                        ">
+                          >
                           <input 
                             id="color-{{ forloop.index0}}"  
                             class="radioSelect"    
                             type="radio" 
                             name="color{{product.id}}" 
-                            value="{{ value }}"                     
+                            value="{{ value }}" 
                           {%if forloop.first%}  
                             checked
                           {%endif%} 
@@ -101,7 +112,7 @@
 
 
   function changeOption(e){
-    console.log("change", e.target.querySelector('input'));
+    //console.log("change", e.target.querySelector('input'));
     const productCard = e.target.parentElement.parentElement.parentElement;
     e.target.querySelector('input').checked = true;
      const {id_product , varianObj} = readDateCard(productCard);
