@@ -4,14 +4,15 @@
 
 
 {%- liquid
-  assign collection_page = collections[section.settings.featured_collection]
-  assign products_number = section.settings.products_number | minus: 1
-  assign product_tag = section.settings.select_by_tag
-  assign count = 0
--%}
+      assign collection_page = collections[section.settings.featured_collection]
+      assign products_number = section.settings.products_number | minus: 1
+      assign product_tag = section.settings.select_by_tag
+      assign count = 0
+    -%}
+<script>console.log({{collection_page | json}})</script>
 
 <div id="cart-list" class="card_product-container">
-  {% for product in collection_page.products %}
+  {% for product in collections.all.products %}
  
 
        <div class="card">
@@ -222,15 +223,4 @@
 	
 
 
-  {% schema %}
-  {
-    "name": "collection-show",
-      "settings": [
-      {
-        "type": "collection",
-        "id": "featured_collection",
-        "label": "Featured collection"
-      }
-        ]
-  }
-  {% endschema %}
+ 
