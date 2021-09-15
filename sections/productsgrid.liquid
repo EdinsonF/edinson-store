@@ -1,12 +1,12 @@
 {{ 'product-grid-gw.css' | asset_url | stylesheet_tag }}
 
-<script> console.log({{ collections.all.products | json }})</script> 
+<script> console.log({{ section.settings.collection.all_products_count | json}})</script> 
 
 
 
 <div id="cart-list" class="card_product-container">
   {% for product in collections.all.products %}
-<script> console.log({{ product.metafields.descripcion.value | json }})</script> 
+ 
 
        <div class="card">
           <div class="card_product-header">
