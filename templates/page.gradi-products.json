@@ -3,7 +3,7 @@
     "main": {
       "type": "productsgrid",
       "settings": {
-        "featured_collection": "damas"
+        "featured_collection": ""
       }
     },
     "popup": {
