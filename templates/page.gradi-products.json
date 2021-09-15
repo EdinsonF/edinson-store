@@ -2,12 +2,13 @@
   "sections": {
     "main": {
       "type": "productsgrid",
-      "settings": { 
+      "settings": {
+        "featured_collection": "franela"
       }
     },
     "popup": {
       "type": "cart-popup",
-      "settings": { 
+      "settings": {
       }
     }
   },
