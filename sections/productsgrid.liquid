@@ -34,8 +34,6 @@
              
                   {% for option in product.options_with_values %}
 
-
-
                       {% if option.name == "Talla" %}
                       
                         <div class="card_option-Select">
@@ -61,10 +59,10 @@
 
                         <label 
                         {% if product.variants[forloop.index0].available %}
-
-                        onmouseover="changeOption(event)"  
-
-                        {%endif%}
+                          onmouseover="changeOption(event)"  
+                        {%else%}
+                          onmouseover="msjAlert(true , {{product.id}})"
+                        {% endif %}
                         class="option-radio"
                           style="background-color: {{product.variants[forloop.index0].metafields.color.value}}" 
                           disabled="disabled"                    
@@ -80,23 +78,23 @@
                             checked
                           {%endif%} 
                           />
-                        
-                          
+                                                 
                         </label>
                       
                         {% endfor%}
                       </div>
                       
                     {% endif %}
-              
-                    
-                  {% endfor%}
-            
+                                
+                  {% endfor%}     
       
           </div>
 
           <div class="card_product-add">
             <button type="button" name="bntAdd" class="add-cart"  data-id="{{product.id}}" onclick="addProduct(event)" >Add</button>
+          </div>
+          <div class="messages{{product.id}} global" >
+            
           </div>
        
         </div>
@@ -106,7 +104,17 @@
 
 <script>
 
-  
+function msjAlert(params, id){
+  const card = document.querySelector(`.messages${id}`);
+  if(params){
+      
+    card.innerHTML = "No disponible"
+
+    setTimeout(() => {
+      card.innerHTML = ""
+    }, 1500);
+  }
+}
 
   const arrCollection = {{collections.all.products | json}}
 
@@ -132,8 +140,8 @@
     if(e.target.classList.contains('add-cart')){
         //buscamos todo lo q tiene donde se hizo clic  
         const productCard = e.target.parentElement.parentElement;
-        const {varianObj} = readDateCard(productCard);    
-        addCarrito(varianObj.id);
+        const {varianObj, id_product} = readDateCard(productCard);    
+        addCarrito(varianObj.id, id_product);
     }
   }
   
@@ -180,7 +188,7 @@
   
   
   //agregando al carrito
-  async function addCarrito(id_variant){
+  async function addCarrito(id_variant, id_product){
     
     let formData = {
         'items': [{
@@ -201,7 +209,7 @@
           
    
           if(rs.status === 422){
-            return "No hay productos disponible";
+            msjAlert(true, id_product);
           }else{
             loadCart();
             showCart();

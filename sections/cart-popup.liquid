@@ -21,7 +21,7 @@ async function  loadCart(){
         containerCart.innerHTML = header;
 
         response.items.forEach(item => {
-          
+          console.log(item);
           containerCart.innerHTML += `    
             <div class="cart_variant">
                 <div class="cart_variant-body">
@@ -32,6 +32,8 @@ async function  loadCart(){
                       <h3>${item.product_title}</h3>
                       <div class="description-text">${item.product_description}</div>
                       <div>${item.variant_title}</div>
+                      <div class="messages${item.id}"></div>
+
 
                     </div>
                     <div class="cart_variant_body-option">
@@ -51,7 +53,7 @@ async function  loadCart(){
                           type="button" 
                           name="bntAdd" 
                           class="cart_variant-btnPlus"  
-                          onclick="addCarrito(${item.id})">
+                          onclick="addCarrito(${item.id}, ${item.id})">
                           +
                         </button>
       
@@ -63,7 +65,9 @@ async function  loadCart(){
                 <div class="cart_variant-footer">
                   <div>Total:</div>
                   <div>${formatterPeso.format(addDecimal(item.final_line_price))}</div>
+                  
                 </div>
+               
             </div>`
 
             totalPrice = totalPrice + item.final_line_price;
