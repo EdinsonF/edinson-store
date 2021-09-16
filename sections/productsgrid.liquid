@@ -38,7 +38,9 @@
                       
                         <div class="card_option-Select">
                             <select name="talla" 
-                              class="selectSelected"     
+                              class="selectSelected" 
+                              onchange="changeOption(event)"  
+
                             >
                             {% for value in option.values %}
                               <option 
@@ -64,8 +66,7 @@
                           onmouseover="msjAlert(true , {{product.id}})"
                         {% endif %}
                         class="option-radio"
-                          style="background-color: {{product.variants[forloop.index0].metafields.color.value}}" 
-                          disabled="disabled"                    
+                          style="background-color: {{product.variants[forloop.index0].metafields.color.value}}"                    
                           
                           >
                           <input 
@@ -120,13 +121,15 @@ function msjAlert(params, id){
 
 
   function changeOption(e){
-    //console.log("change", e.target.querySelector('input'));
-    const productCard = e.target.parentElement.parentElement.parentElement;
-    e.target.querySelector('input').checked = true;
+
+    if(!e.target.classList.contains("selectSelected")){
+      e.target.querySelector('input').checked = true;
+    }
+
+     const productCard = e.target.parentElement.parentElement.parentElement;
      const {id_product , varianObj} = readDateCard(productCard);
      const  imageObj  =  varianObj.featured_image.src;
-    
-
+  
      const image = document.querySelector(`#image${id_product}`);
            image.setAttribute('srcset', imageObj);
      const price = document.querySelector(`#price${id_product}`);
@@ -220,6 +223,7 @@ function msjAlert(params, id){
   }
 
 
+  /* formatear a peso colomniano */
   const formatterPeso = new Intl.NumberFormat('es-CO', {
           style: 'currency',
           currency: 'COP',

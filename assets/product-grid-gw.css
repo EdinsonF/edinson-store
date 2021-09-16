@@ -6,6 +6,7 @@
 .card_product-container{
   background: rgb(234, 242, 247);
   display: flex;
+  flex-wrap: wrap;
   padding: 20px 15px;
 }
 

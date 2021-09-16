@@ -280,3 +280,16 @@
 .banner__heading {
   margin-bottom: 0;
 }
+
+ img{
+ width: 100vw; 
+ height: 600px;
+}
+
+.banner-slider{
+  height: 600px;
+
+}
+.splide {
+  padding: 0 !important;
+}
