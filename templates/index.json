@@ -28,6 +28,7 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/running-cloudy-day.jpg",
+        "image_2": "shopify:\/\/shop_images\/woman-and-boy-muscle.jpg",
         "adapt_height_first_image": false,
         "desktop_text_box_position": "flex-end",
         "show_text_box": true,
