@@ -34,17 +34,22 @@
 {%- endstyle -%}
 
 <div >
-
+<div class="message-entry">
+  Somos una tienda de alto impacto con más de XXXX órdenes entregadas y más de XXXX clientes a nivel mundial.
+</div>
 
   <div class="splide banner-slider">
     <div class="splide__track">
       <ul class="splide__list">
-    {% for product in collections.all.products %}
     
         <li class="splide__slide">
-          <img srcset="{{product.metafields.image.value }}" alt="" class="slide-image-home" >
+          <img srcset="{{ section.settings.image | img_url:'' }}" alt="" class="slide-image-home" >
         </li>
-    {% endfor% %}
+        <li class="splide__slide">
+          <img srcset="{{ section.settings.image_2 | img_url:'' }}" alt="" class="slide-image-home" >
+        </li>
+        
+    
       </ul>
     </div>
   </div>
@@ -81,7 +86,20 @@
  
   document.addEventListener( 'DOMContentLoaded', function () {
 		new Splide( '.splide' ).mount();
+
+    loadInfo();
 	} );
+
+  async function loadInfo(){
+    const content = document.querySelector('.message-entry');
+
+    const result = await fetch('http//:localhost:3000/api/orders/count');
+
+    const data = await result;
+
+    console.log(data);
+
+  }
 
   </script>
 
